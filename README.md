@@ -77,3 +77,53 @@ CREATE TABLE cities(
 - INTEGER
   - Number without a decimal. -2,147,483,647 to 2,147,483,647
     (Anything larger or smaller will give an error!)
+
+### Calculations on columns
+
+Show the name of the cities and the population density from the cities table.
+Population is divided by area and shown as a new column called population_density with the updated data.
+
+```SQL
+SELECT name, (population / area) AS population_density
+FROM cities;
+```
+
+### String Operations and Functions
+
+Existing String Functions:
+
+- || (Join two strings)
+- CONCAT() Join two strings
+- LOWER() Gives a lower case string
+- LENGTH() Gives a number of a character in a string
+- UPPER() Gives an upper case string
+
+```SQL
+-- Unspaced concatenation (output example: TokyoJapan)
+SELECT (name || country) AS column_rename_here
+FROM cities;
+-- With a comma and a space, (output example: Tokyo, Japan)
+SELECT (name || ', ' || country) AS column_rename_here
+FROM cities;
+
+-- With the CONCAT() operation
+SELECT CONCAT(name, country) AS location
+FROM cities;
+
+-- With spacing
+SELECT CONCAT(name,', ',country) AS location
+FROM cities;
+
+-- With capitalization on the names
+SELECT CONCAT(UPPER(name),', ',UPPER(country)) AS location
+FROM cities;
+
+--With lowercase
+SELECT CONCAT(LOWER(name),', ',LOWER(country)) AS location
+FROM cities;
+
+-- Length shows the length of a string, (output: length of the row item)
+SELECT LENGTH(name) FROM cities;
+```
+
+### Filtering Records
